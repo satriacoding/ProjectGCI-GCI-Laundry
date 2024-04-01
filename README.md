@@ -6,7 +6,7 @@ Kelompok 5
 - Satria Rhama Dwi Jaya
 - Muhammad Alif Putra Ananda
 - Muhammad Bintang Rahmad Handevis
-- Arrasy Rizky Taher
+-  Arrasy Rizqi Taher
 
 - link url video presentasi (https://drive.google.com/drive/folders/1ydzJHAZ-sYrBMYwNH3mJbtVO7WM3jhDhusp=drive_link)
 
