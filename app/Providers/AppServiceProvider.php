@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,8 +21,15 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        $this->registerPolicies();
+
+        Gate::define('view-gallery', function ($user) {
+            return $user->email === 'bintanghandevis03@gmail.com';
+        });
     }
 }
+
+
+

@@ -1,60 +1,53 @@
 @extends('layouts.main')
 
 @section('content')
-    <!doctype html>
-    <html lang="en">
-
-    <head>
-        <title></title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-
-    <body>
-        <section class="ftco-section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-7 col-lg-5">
-                        <div class="login-wrap p-4 p-md-5">
-                            <h3 class="text-center mb-4">Register Form</h3>
-                            <form action="/register" method="POST" class="register-form">
-                                @csrf
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control rounded-left" placeholder="Username" required>
-                                </div>
-                                <div class="form-group d-flex">
-                                    <input type="email" class="form-control rounded-left" placeholder="Email" required>
-                                </div>
-                                <div class="form-group d-flex">
-                                    <input type="password" class="form-control rounded-left" placeholder="Password"
-                                        required>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit"
-                                        class="form-control btn btn-primary rounded submit px-3">Register</button>
-                                </div>
-                                <div class="form-group d-md-flex">
-
-
-                                    <small class="d-block text-center">Already Register? </small><a href="/login"> Log
-                                        In</a>
-
-                                </div>
-                            </form>
-                        </div>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-5">
+                    <div class="login-wrap p-4 p-md-5">
+                        <h3 class="text-center mb-4">Register Form</h3>
+                        <form action="/register" method="POST" class="register-form">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left @error('name') is-invalid @enderror"
+                                    placeholder="Username" name="name" id="name" required
+                                    value="{{ old('name') }}">
+                                @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control rounded-left @error('email') is-invalid @enderror"
+                                    placeholder="Email" name="email" id="email" required value="{{ old('email') }}">
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="password"
+                                    class="form-control rounded-left @error('password') is-invalid @enderror"
+                                    placeholder="Password" name="password" id="password" required>
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary rounded submit px-3">Register</button>
+                            </div>
+                            <div class="form-group">
+                                <small class="text-center d-block">Already Registered? <a href="/login"> Log In</a></small>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
-    </body>
-
-    </html>
+        </div>
+    </section>
 @endsection

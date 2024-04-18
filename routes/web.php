@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,12 +12,24 @@ Route::get('/home', function () {
     return view('home');
 });
 
-use App\Http\Controllers\AuthController;
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [LoginController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [LoginController::class, 'register']);
+Route::get('/register', function () {
+    return view('register');
+});
+
+// Route untuk menampilkan formulir pendaftaran
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+
+// Route untuk menyimpan data pendaftaran
+Route::post('/register/store', [RegisterController::class, 'store']);
+
+// Route untuk menampilkan halaman login
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
+// Route untuk mengautentikasi pengguna
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+// Route untuk logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 

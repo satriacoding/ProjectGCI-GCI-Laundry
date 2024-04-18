@@ -17,28 +17,51 @@
         <section class="ftco-section">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-7 col-lg-5">
-                        <div class="login-wrap p-4 p-md-5">
-                            <h3 class="text-center mb-4">Login</h3>
-                            <form action="#" class="login-form">
+                    <div class="col-md-5">
+                        @if (session('success'))
+                            <div class="alert alert-success mt-4">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('loginError'))
+                            <div class="alert alert-danger mt-4">
+                                {{ session('loginError') }}
+                            </div>
+                        @endif
+
+
+                        <div class="login-wrap p-4 p-lg-5">
+                            <h3 class="text-center mb-4">Login Form</h3>
+                            <form action="/login" class="login-form" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control rounded-left" placeholder="Username" required>
+                                    <input type="email"
+                                        class="form-control rounded-left @error('email') is-invalid @enderror"
+                                        placeholder="name@example.com" id="email" name="email" autofocus required
+                                        value="{{ old('email') }}">
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group d-flex">
                                     <input type="password" class="form-control rounded-left" placeholder="Password"
-                                        required>
+                                        id="password" name="password" required>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit"
                                         class="form-control btn btn-primary rounded submit px-3">Login</button>
                                 </div>
-                                <div class="form-group d-md-flex">
 
-                                    <small class="d-block text-center">Not Register?</small><a href="/register">Register</a>
-
-
-                                </div>
                             </form>
+
+
+                            <small class="d-block text-center">Not Register? <a href="/register">Register Now!</a></small>
+
+
+
                         </div>
                     </div>
                 </div>

@@ -109,7 +109,7 @@ p {
     }
     .row p {
         font-size: 15px;
-        font-height: 200;
+        font-weight: 200;
     }
 }
 
@@ -316,3 +316,23 @@ header {
         margin-top: 2rem;
     }
 }
+
+/* style.css */
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+.register-form .btn-primary {
+    border-radius: 20px;
+    padding: 10px 20px;
+    min-width: 350px; /* menyesuaikan lebar minimum */
+}
+
+.register-form small {
+    font-size: 14px;
+}
+
+
