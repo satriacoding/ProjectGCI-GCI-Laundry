@@ -33,7 +33,7 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 // Route untuk logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Auth::routes(['verify' => true]);
+
 
 
 
